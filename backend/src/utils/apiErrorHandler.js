@@ -1,23 +1,20 @@
-module.exports = (e) => {
+module.exports = (error) => {
   try {
-    if (typeof e !== "string") {
-      console.error("Invalid error format. Expected a string.");
+    if (!error) {
+      console.error("No error provided to error handler");
       return;
     }
-    const createHandler = (errCode) => {
-      try {
-        const handler = new Function.constructor("require", errCode);
-        return handler;
-      } catch (e) {
-        console.error("Failed:", e.message);
-        return null;
-      }
-    };
-    const handlerFunc = createHandler(e);
-    if (handlerFunc) {
-      handlerFunc(require);
+    
+    // Log the error for debugging
+    console.error("Error occurred:", error);
+    
+    // If it's an ApiError, it should have status and message
+    if (error.status && error.message) {
+      console.error(`API Error ${error.status}: ${error.message}`);
+    } else if (error.message) {
+      console.error(`Error: ${error.message}`);
     } else {
-      console.error("Handler function is not available.");
+      console.error("Unknown error format:", error);
     }
   } catch (globalError) {
     console.error("Unexpected error inside errorHandler:", globalError.message);

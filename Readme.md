@@ -16,7 +16,7 @@ skill-test/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v16 or higher) 
 - PostgreSQL (v12 or higher)
 - npm or yarn
 
