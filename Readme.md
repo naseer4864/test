@@ -263,4 +263,5 @@ For questions and support:
 
 ---
 
-**Happy Coding! 🚀**
+**Happy Coding! 🚀**# School Management System
+# School Management System
